@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/11/21 14:47:02 by abaur            ###   ########.fr       */
+/*   Updated: 2019/11/22 12:05:12 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,24 @@ static void TestOnePrintf(const char* format, ...)
 	va_list args;
 	va_list argscpy;
 
-	int result;
+	int expected;
+	int returned;
 
 	va_start(args, format);
 	va_copy(argscpy, args);
 
-	result = vprintf(format, argscpy);
-	printf("\t=> %d\n", result);
+	printf("\n");
+	expected = vprintf(format, argscpy);
+	printf("\n");
 
-	result = ft_vprintf(format, args);
-	printf("\t=> %d\n", result);
+	returned = ft_vprintf(format, args);
+	printf("\n");
 
 	va_end(argscpy);
 	va_end(args);
 
-	printf("\n");
+	if (expected != returned)
+		printf("\t Expected: %d \n\t Returned: %d \n", expected, returned);
 }
 
 void TestPrintf()
@@ -47,8 +50,12 @@ void TestPrintf()
 	TestOnePrintf("String %s", "Soupe au choux");
 	TestOnePrintf("Hexa %x %x", 0, 32);
 	TestOnePrintf("Octa %o %o", 0, 32);
-	TestOnePrintf("Fausse alerte %%");
-	TestOnePrintf("Fausse vraie alerte %w");
+	TestOnePrintf("Vraie fausse alerte %%");
+	TestOnePrintf("Fausse vraie alerte %wysiwyg");
+
+	TestOnePrintf("Padding de base %14d", -42);
+	TestOnePrintf("Padding a la con %#+010X", 256);
+	TestOnePrintf("Padding mesquin % 2d", 0);
 
 	TestOnePrintf("I got a %s, Woho, ho", "hangover");
 }
