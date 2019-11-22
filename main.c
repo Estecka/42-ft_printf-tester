@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/11/22 13:48:38 by abaur            ###   ########.fr       */
+/*   Updated: 2019/11/22 15:50:26 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ void TestPrintf()
 	TestOnePrintf("Boop");
 	TestOnePrintf("Digit %d", 5);
 	TestOnePrintf("String %s", "Soupe au choux");
+	TestOnePrintf("Zeroed string %010s", "Gnouh");
 	TestOnePrintf("Hexa %x %x", 0, 32);
 	TestOnePrintf("Octa %o %o", 0, 32);
 	TestOnePrintf("Vraie fausse alerte %%", 0, 0);
 	TestOnePrintf("Fausse vraie alerte %wysiwyg", 0);
-	TestOnePrintf("Double Padding !! %5-6d", 0);
+	TestOnePrintf("Double Padding !! %3-010d", 0);
 	TestOnePrintf("Je beguaie %-0-0d", 5);
 
 	TestOnePrintf("Padding de base %14d", -42);
