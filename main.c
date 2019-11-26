@@ -6,12 +6,13 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/11/22 15:50:26 by abaur            ###   ########.fr       */
+/*   Updated: 2019/11/26 13:03:15 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <unistd.h>
 
 int    vprintf(const char* format, va_list args); // Defined in stdio.
 int ft_vprintf(const char* format, va_list args); // Needs to be defined by you.
@@ -28,11 +29,14 @@ static void TestOnePrintf(const char* format, ...)
 	va_copy(argscpy, args);
 
 	printf("\n");
-	expected = vprintf(format, argscpy);
-	printf("\n");
+	printf("\"%s\"\n\"", format);
 
+	expected = vprintf(format, argscpy);
+	printf("\"\n");
+
+	write(1, "\"", 1);
 	returned = ft_vprintf(format, args);
-	printf("\n");
+	printf("\"\n");
 
 	va_end(argscpy);
 	va_end(args);
@@ -49,6 +53,8 @@ void TestPrintf()
 	TestOnePrintf("Digit %d", 5);
 	TestOnePrintf("String %s", "Soupe au choux");
 	TestOnePrintf("Zeroed string %010s", "Gnouh");
+	TestOnePrintf("Padded string `%10s`", "Bneh");
+	TestOnePrintf("Left padded string `%-010s`", "Poux");
 	TestOnePrintf("Hexa %x %x", 0, 32);
 	TestOnePrintf("Octa %o %o", 0, 32);
 	TestOnePrintf("Vraie fausse alerte %%", 0, 0);
