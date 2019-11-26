@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/11/26 13:03:15 by abaur            ###   ########.fr       */
+/*   Updated: 2019/11/26 14:32:14 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,16 @@ void TestPrintf()
 	printf("\n\n\tft_vprintf\n");
 
 	TestOnePrintf("Boop");
-	TestOnePrintf("Digit %d", 5);
+
+
 	TestOnePrintf("String %s", "Soupe au choux");
 	TestOnePrintf("Zeroed string %010s", "Gnouh");
 	TestOnePrintf("Padded string `%10s`", "Bneh");
 	TestOnePrintf("Left padded string `%-010s`", "Poux");
+
+	TestOnePrintf("Characters %c, %5c, %05c, %-5c, %#-05c", '%', '5', ' ', '-', '0');
+
+	TestOnePrintf("Digit %d", 5);
 	TestOnePrintf("Hexa %x %x", 0, 32);
 	TestOnePrintf("Octa %o %o", 0, 32);
 	TestOnePrintf("Vraie fausse alerte %%", 0, 0);
