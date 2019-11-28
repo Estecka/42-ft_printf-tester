@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/11/28 13:00:18 by abaur            ###   ########.fr       */
+/*   Updated: 2019/11/28 14:52:47 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void TestPrintf()
 	TestOnePrintf("Boop");
 	TestOnePrintf("Vraie fausse alerte %%", 0, 0);
 	TestOnePrintf("Fausse vraie alerte %wysiwyg", 0);
+	TestOnePrintf("Alerte a la con %\0", 0);
 
 	TestOnePrintf("String %s", "Soupe au choux");
 	TestOnePrintf("Zeroed string %010s", "Gnouh");
@@ -70,7 +71,7 @@ void TestPrintf()
 	TestOnePrintf("HEXA %X, %X, %010X, %-010X", 0, UINT_MAX, INT_MAX, UINT_MAX);
 
 	TestOnePrintf("Double Padding !! %3-010d", 0);
-	TestOnePrintf("Je beguaie %-0-0d %", 5);
+	TestOnePrintf("Je beguaie %-0-0d", 5);
 }
 
 int	main()
