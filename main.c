@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/11/27 17:42:37 by abaur            ###   ########.fr       */
+/*   Updated: 2019/11/28 13:00:18 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ static void TestOnePrintf(const char* format, ...)
 	va_end(argscpy);
 	va_end(args);
 
-	if (expected != returned)
+	if (expected != returned){
+		printf("\033[1;31m");
 		printf("\t Expected: %d \n\t Returned: %d \n", expected, returned);
+		printf("\033[0m");
+	}
 }
 
 void TestPrintf()
