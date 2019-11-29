@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/11/29 12:23:32 by abaur            ###   ########.fr       */
+/*   Updated: 2019/11/29 13:06:38 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void TestPrintf()
 	TestOnePrintf("Characters %c, %5c, %05c, %-5c, %#-05c", '%', '5', ' ', '-', '0');
 	TestOnePrintf("Decimal %d, %d, %d, %015d, %-015d", 0, INT_MIN, INT_MAX, INT_MIN, INT_MAX);
 	TestOnePrintf("Unsigned %u, %u, %015u, %-015u", 0, UINT_MAX, INT_MAX, UINT_MAX);
-	TestOnePrintf("Octa %o, %o, %010o, %-010o", 0, UINT_MAX, INT_MAX, UINT_MAX);
+	TestOnePrintf("Octa %o, %#o, %010o, %-010o", 0, INT_MAX, INT_MAX, UINT_MAX);
 	TestOnePrintf("Hexa %x, %x, %010x, %-010x", 0, UINT_MAX, INT_MAX, UINT_MAX);
 	TestOnePrintf("HEXA %X, %X, %010X, %-010X", 0, UINT_MAX, INT_MAX, UINT_MAX);
-	TestOnePrintf("Pointer %p %p, %015p, %#-015p", 0, "Boop", UINT_MAX, ULONG_MAX);
+	TestOnePrintf("Pointer %p, %p, %015p, %#-015p", 0, "Boop", UINT_MAX, ULONG_MAX);
 
 	TestOnePrintf("Double Padding !! %3-010d", 0);
 	TestOnePrintf("Je beguaie %-0-0d", 5);
