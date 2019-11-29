@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/11/28 14:52:47 by abaur            ###   ########.fr       */
+/*   Updated: 2019/11/29 11:57:54 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ static void TestOnePrintf(const char* format, ...)
 	va_copy(argscpy, args);
 
 	printf("\n");
-	printf("\"%s\"\n\"", format);
+	printf("\033[1;36m");
+	printf("\"%s\"\n", format);
+	printf("\033[0m");
 
+	printf("\"");
 	expected = vprintf(format, argscpy);
 	printf("\"\n");
 
