@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/12/02 13:57:44 by abaur            ###   ########.fr       */
+/*   Updated: 2019/12/02 14:19:59 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int main()
 	printfc(YELLOW, 1, "\n\n\tft_vprintf\n");
 
 	printfc(BLUE, 1, "\tBasic tests\n");
+	UnitTestAll(basicUnitTests, '%', 1, 0);
 	UnitTestAll(basicUnitTests, 'c', 5, '\0', 'a', '%', ' ', '\255');
 	UnitTestAll(basicUnitTests, 's', 5, "Schtroumpf", "Gnouh", "Poux", "\0Surprise madafaka", NULL);
 	UnitTestAll(basicUnitTests, 'd', 7, 0, 1, -1, 1010, -1010, INT_MAX, INT_MIN);
