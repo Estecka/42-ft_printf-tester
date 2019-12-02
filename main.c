@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/11/29 18:05:06 by abaur            ###   ########.fr       */
+/*   Updated: 2019/12/02 13:57:44 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,13 @@ int main()
 		"%5?",
 		"%10?",
 		"%-06?",
-		"%-010?",
 		"%.5?",
-		"%-.10?",
-		"%-0.5?",
-		"%-0.10?",
-		"%-05.10?",
-		"%3-.6?",
-		"%.5-03?",
-		"%.5-03?",
+		"%.010?",
+		"%.0?",
+		"%.?",
+		"%05.10?",
+		"%010-.5?",
+		"%.10-5?",
 		"%-05.10-010.5?",
 		NULL
 	};
@@ -55,7 +53,6 @@ int main()
 	printfc(YELLOW, 1, "\n\n\tft_vprintf\n");
 
 	printfc(BLUE, 1, "\tBasic tests\n");
-
 	UnitTestAll(basicUnitTests, 'c', 5, '\0', 'a', '%', ' ', '\255');
 	UnitTestAll(basicUnitTests, 's', 5, "Schtroumpf", "Gnouh", "Poux", "\0Surprise madafaka", NULL);
 	UnitTestAll(basicUnitTests, 'd', 7, 0, 1, -1, 1010, -1010, INT_MAX, INT_MIN);
@@ -68,10 +65,18 @@ int main()
 	UnitTestAll(basicUnitTests, 'p', 5, NULL, "Boop", "Tourte", INT_MAX, UINT_MAX);
 
 
-	printfc(BLUE, 1, "\n\t Random Tests\n");
+	printfc(BLUE, 1, "\tParametric precision\n");
+	TestOnePrintf("%.*s", 5, "string");
+	TestOnePrintf("%.*d", 5, "13");
+	TestOnePrintf("%.*p", 5, "Woop de do");
+	TestOnePrintf("%.*p", 0, NULL);
+	TestOnePrintf("%.*X", 0, 0);
+	TestOnePrintf("%.*x", 0, 0);
 
-	TestOnePrintf("The %s %c%-2c%x.", "heavy", 'i', 's', 0xdead);
+
+	printfc(BLUE, 1, "\n\t Random Tests\n");
+	TestOnePrintf("The %.*s %c%-2c%x.", 5, "heavyyyyyyy", 'i', 's', 0xdead);
 	TestOnePrintf("Th%-2xh%xvy is%5X ?!?", 0xe, 0xea, 0xDEAD);
-	TestOnePrintf("%-4s!", "YES");
+	TestOnePrintf("%-4s%.0u!", "YES", 0);
 	TestOnePrintf("H%-2X%XI%-3X!", 0xE, 0xD, 0xED);
 }
