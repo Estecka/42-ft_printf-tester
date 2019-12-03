@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/12/02 14:19:59 by abaur            ###   ########.fr       */
+/*   Updated: 2019/12/03 17:19:15 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int main()
 
 	printfc(YELLOW, 1, "\n\n\tft_vprintf\n");
 
+	// Uncomment to crash the standard printf :
+	//printf("[%lc]\n", -1);
+
 	printfc(BLUE, 1, "\tBasic tests\n");
 	UnitTestAll(basicUnitTests, '%', 1, 0);
 	UnitTestAll(basicUnitTests, 'c', 5, '\0', 'a', '%', ' ', '\255');
@@ -80,4 +83,10 @@ int main()
 	TestOnePrintf("Th%-2xh%xvy is%5X ?!?", 0xe, 0xea, 0xDEAD);
 	TestOnePrintf("%-4s%.0u!", "YES", 0);
 	TestOnePrintf("H%-2X%XI%-3X!", 0xE, 0xD, 0xED);
+
+	printfc(BLUE, 1, "\n\tprintf-unit-test thingies\n");
+	TestOnePrintf("", '~');
+	TestOnePrintf("", (char)231);
+	TestOnePrintf(NULL, (char)0);
+	TestOnePrintf("%4lc", 'U');
 }
