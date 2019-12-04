@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/12/04 15:37:42 by abaur            ###   ########.fr       */
+/*   Updated: 2019/12/04 15:41:19 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,14 @@ int main()
 
 	printfc(BLUE, 1, "\n\tParametric padding\n");
 	TestOnePrintf("%*s", 6, "stonk");
-	TestOnePrintf("%0 *X", 2, 0xDAD);
+	TestOnePrintf("%-0 *X", -4, 0xDAD);
 	TestOnePrintf("%0*d", -6, 1234);
 	TestOnePrintf("%*p",  -20, "shmucks");
 
 
 	printfc(BLUE, 1, "\n\tParametric precision\n");
 	TestOnePrintf("%.*s", 5, "string");
-	TestOnePrintf("%.*d", 5, "13");
+	TestOnePrintf("%.*d", -5, 13);
 	TestOnePrintf("%.*p", 5, "Woop de do");
 	TestOnePrintf("%.*p", 0, NULL);
 	TestOnePrintf("%.*X", 0, 0);
