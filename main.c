@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/12/02 14:19:59 by abaur            ###   ########.fr       */
+/*   Updated: 2019/12/04 14:43:53 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,14 @@ int main()
 	UnitTestAll(basicUnitTests, 'u', 5, 0, 1, 1010, INT_MAX, UINT_MAX);
 	UnitTestAll(basicUnitTests, 'p', 5, NULL, "Boop", "Tourte", INT_MAX, UINT_MAX);
 
+	printfc(BLUE, 1, "\n\tParametric padding\n");
+	TestOnePrintf("%*s", 6, "stonk");
+	TestOnePrintf("%0*d", 6, 1234);
+	TestOnePrintf("%*p",  20, "shmucks");
+	TestOnePrintf("%0 *X  ", 2, 0xDAD);
 
-	printfc(BLUE, 1, "\tParametric precision\n");
+
+	printfc(BLUE, 1, "\n\tParametric precision\n");
 	TestOnePrintf("%.*s", 5, "string");
 	TestOnePrintf("%.*d", 5, "13");
 	TestOnePrintf("%.*p", 5, "Woop de do");
@@ -74,10 +80,18 @@ int main()
 	TestOnePrintf("%.*X", 0, 0);
 	TestOnePrintf("%.*x", 0, 0);
 
+	printfc(BLUE, 1, "\n\tParametric clusterfuck\n");
+	TestOnePrintf("%*-.*s", 10, 5, "die !!!!!!");
+	TestOnePrintf("%*-*.*s", 20, 10, 5, "die !!!!!!");
+	TestOnePrintf("%*-*-*-*-*.*s", 20, 30, 40, 50, 10, 5, "die !!!!!!");
+	TestOnePrintf("%.*-*s", 5, 10, "die !!!!!!");
+	TestOnePrintf("%*-.*.*s", 10, 6, 5, "die !!!!!!");
+	TestOnePrintf("%.*-*.*s", 6, 10, 5, "die !!!!!!");
+
 
 	printfc(BLUE, 1, "\n\t Random Tests\n");
 	TestOnePrintf("The %.*s %c%-2c%x.", 5, "heavyyyyyyy", 'i', 's', 0xdead);
-	TestOnePrintf("Th%-2xh%xvy is%5X ?!?", 0xe, 0xea, 0xDEAD);
+	TestOnePrintf("Th%-*xh%xvy is%*X ?!?", 2, 0xe, 0xea, 5, 0xDEAD);
 	TestOnePrintf("%-4s%.0u!", "YES", 0);
-	TestOnePrintf("H%-2X%XI%-3X!", 0xE, 0xD, 0xED);
+	TestOnePrintf("H%-2X%XI%-*X!", 0xE, 0xD, 3, 0xED);
 }
