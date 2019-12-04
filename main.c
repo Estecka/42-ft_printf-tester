@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:30:43 by abaur             #+#    #+#             */
-/*   Updated: 2019/12/04 14:43:53 by abaur            ###   ########.fr       */
+/*   Updated: 2019/12/04 15:12:20 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int main()
 {
 	const char* basicUnitTests[] = {
 		"%?",
+		"%%%?",
+		"%%?",
 		"%5?",
 		"%10?",
 		"%-06?",
@@ -47,6 +49,12 @@ int main()
 		"%010-.5?",
 		"%.10-5?",
 		"%-05.10-010.5?",
+		NULL
+	};
+
+	const char* zeropaddingPrecision[] = {
+		"%09.5?",
+		"%02.5?",
 		NULL
 	};
 
@@ -62,8 +70,16 @@ int main()
 	UnitTestAll(basicUnitTests, 'x', 5, 0, 1, 1010, INT_MAX, UINT_MAX);
 	UnitTestAll(basicUnitTests, 'X', 5, 0, 1, 1010, INT_MAX, UINT_MAX);
 	UnitTestAll(basicUnitTests, 'u', 5, 0, 1, 1010, INT_MAX, UINT_MAX);
-	UnitTestAll(basicUnitTests, 'u', 5, 0, 1, 1010, INT_MAX, UINT_MAX);
 	UnitTestAll(basicUnitTests, 'p', 5, NULL, "Boop", "Tourte", INT_MAX, UINT_MAX);
+
+	printfc(BLUE, 1, "\n\tZero-padded precision\n");
+	UnitTestAll(zeropaddingPrecision, '%', 1, 0);
+	UnitTestAll(zeropaddingPrecision, 'c', 5, '\0', 'a', '%', ' ', '\255');
+	UnitTestAll(zeropaddingPrecision, 's', 5, "Schtroumpf", "Gnouh", "Poux", "\0Surprise madafaka", NULL);
+	UnitTestAll(zeropaddingPrecision, 'u', 5, 0, 1, 1010, INT_MAX, UINT_MAX);
+	UnitTestAll(zeropaddingPrecision, 'd', 5, 0, 1, 1010, INT_MAX, UINT_MAX);
+	UnitTestAll(zeropaddingPrecision, 'x', 5, 0, 1, 1010, INT_MAX, UINT_MAX);
+	UnitTestAll(zeropaddingPrecision, 'p', 5, NULL, "Boop", "Tourte", INT_MAX, UINT_MAX);
 
 	printfc(BLUE, 1, "\n\tParametric padding\n");
 	TestOnePrintf("%*s", 6, "stonk");
@@ -90,6 +106,7 @@ int main()
 
 
 	printfc(BLUE, 1, "\n\t Random Tests\n");
+
 	TestOnePrintf("The %.*s %c%-2c%x.", 5, "heavyyyyyyy", 'i', 's', 0xdead);
 	TestOnePrintf("Th%-*xh%xvy is%*X ?!?", 2, 0xe, 0xea, 5, 0xDEAD);
 	TestOnePrintf("%-4s%.0u!", "YES", 0);
