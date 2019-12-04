@@ -1,39 +1,32 @@
-PRINTFDIR	= ..
-LIBFTDIR	= ../libft
-
-PRINTF	= ${PRINTFDIR}/libftprintf.a
-LIBFT	= ${LIBFTDIR}/libft.a
+PRINTF_H_DIR	= ../
+PRINTF_DIR		= ../
+LIBPRINTF		= ${PRINTF_DIR}/libftprintf.a
 
 NAME	= test.out
 
 test: ${NAME}
-${NAME}: libft printf
-	gcc *.c -o ${NAME} -Wall -Wextra -L ${PRINTFDIR} -lftprintf -L ${LIBFTDIR} -lft
+${NAME}: printf
+	gcc *.c -o ${NAME} -Wall -Wextra -L ${PRINTF_DIR} -lftprintf -I ${PRINTF_H_DIR}
 
-printf: ${PRINTF}
-${PRINTF}:
-	make -C ${PRINTFDIR}
-
-libft: ${LIBFT}
-${LIBFT}:
-	make -C ${LIBFTDIR}
+printf: ${LIBPRINTF}
+${LIBPRINTF}:
+	make -C ${PRINTF_DIR}
 
 autorun: fclean test
-	norminette ${LIBFTDIR}/*.c  ${LIBFTDIR}/*.h
-	norminette ${PRINTFDIR}/*.c ${PRINTFDIR}/*.h
+	norminette `find ../* -name "*.[ch]"`
 	./${NAME}
 
 
-all: libft test
+all: printf test
 
 clean:
+	make clean -C ${PRINTF_DIR}
 	rm -f *.o
 	rm -f *.gch
 
 fclean: clean
 	rm -f ${NAME}
-	make fclean -C ${PRINTFDIR}
-	make fclean -C ${LIBFTDIR}
+	make fclean -C ${PRINTF_DIR}
 
 re: fclean test
 

@@ -6,7 +6,7 @@
 /*   By: abaur <abaur@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 13:17:37 by abaur             #+#    #+#             */
-/*   Updated: 2019/11/29 18:17:43 by abaur            ###   ########.fr       */
+/*   Updated: 2019/12/04 12:24:56 by abaur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <unistd.h>
 
 #include "logutil.h"
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void printTitle(const char* title)
 {
