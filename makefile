@@ -13,7 +13,6 @@ ${LIBPRINTF}:
 	make -C ${PRINTF_DIR}
 
 autorun: fclean test
-	norminette `find ../* -name "*.[ch]"`
 	./${NAME}
 
 
